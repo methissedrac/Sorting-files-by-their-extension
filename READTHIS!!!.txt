@@ -1,0 +1,43 @@
+The text is written with the help of an English translator. Please be understanding. The text in the original language (in Russian) is in the file "Прочитайте это.txt "
+The main script is called "TransmissionFileType1.ps1"
+
+What does this script do?
+
+	Run the script as an administrator.
+	It creates a folder(s), if they have not been created yet, in the Download directory. 
+	Then it sorts the files in the Download directory, depending on their extension, into the necessary folders. 
+	For example, we have a folder named "exeFiles". All files with the .exe extension will be sorted into this folder. 
+	The script works automatically.  Just click on the icon of the script file, a PowerShell window will open. 
+	All unsorted files will be sorted. To disable the script, simply close the PowerShell window. 
+
+P.S. If the PowerShell window is always open, but you want the script to always work, then just run the file "HiddentSetupScript.bat". 
+Before that, do not forget to open it using Notepad (or any other text editor) and specify the path to the script file there.
+
+How do you edit the script? Well, for example, add a new extension and a folder for it. 
+
+Everything is simple. Most often it will be CTRL C + CTRL V. Be sure to read the comments.
+
+1) At the very top, create a variable using "$". You can give any name, but it is desirable to give something meaningful (for example, for *.exe files, name the variable "exeFiles").
+After the "=" sign in quotation marks, you need to write the path by which the folder should be created, in which the files you need will be sorted.
+2) Copy this code: 
+
+If (-Not (Test path is Path $imageDest)) _BOS_
+       New-Item -ItemType Directory -Path $imageDest
+   }
+
+Replace $imageDest with the name of your variable (for example, $archiveDest) that you created (be sure to check the case, spaces, and the like). 
+This part of the code will create a folder along the path that you specified when executing step 1)
+Paste the received code before the comment: # Перемещение файлов и бесконечный цикл для работы в фоне
+
+3) Copy this code: 
+
+elseif ($_.Extension -Equalizer ".zip") {
+Move-Element -Path $_.Full name -destination $archiveDest
+}
+
+
+Change it."zip" in the part of the code that is on top of the extension you need. replace $archiveDest with the variable from point 1) 
+Paste the resulting code in front of the closing curly brace "}". This parenthesis will be placed before the comment: # Задержка перед следующей проверкой
+, i.e. your code should be in a while loop. 
+
+Congratulations, you have added a new extension for the script. That's all.

@@ -1,0 +1,4 @@
+   - Open the Task Scheduler.
+   - Create a new task and set the trigger to "On schedule" or "At login".
+   - - In the "Action" section, select "Run the program" and specify powershell.exe in the "Program/script" field.
+   - In the Arguments field, enter -ExecutionPolicy Bypass -File "C:\path\to\your\script\TransmissionFileType1.ps1".

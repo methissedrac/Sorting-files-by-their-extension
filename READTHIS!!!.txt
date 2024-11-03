@@ -41,3 +41,5 @@ Paste the resulting code in front of the closing curly brace "}". This parenthes
 , i.e. your code should be in a while loop. 
 
 Congratulations, you have added a new extension for the script. That's all.
+
+P.S.S. According to my observations, the python version works better. You can try it
